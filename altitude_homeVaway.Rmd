@@ -1,0 +1,52 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE, fig.width = 100, fig.height = 5)
+
+df <- read.csv("team_meandisttravel_homeandaway_nongrouped.csv")
+```
+
+
+
+```{r}
+#anova(DIST~HIGHALT_home+HIGHALT_away,data=df)
+
+m1 <- lm(DIST~HIGHALT_away,data=df)
+
+anova(m1)
+
+
+```
+
+
+```{r}
+summary(m1)
+```
+
+
+
+
+```{r fig.width = 12, fig.height = 12}
+library(ggplot2)
+
+ggplot(df, aes(x = TEAM_ABBREVIATION, y = DIST)) + geom_boxplot(aes(fill = HIGHALT_away),position = position_dodge(0.8))+
+  scale_fill_manual(values=c("#999999", "#E69F00")) + theme(aspect.ratio = 1)
+
+ggsave("distance_homeVaway.png")
+
+```
+
+
+
+
+
+
+
+
+
+
