@@ -1,0 +1,42 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+df <- read.csv("C:/Users/Alex/Google Drive/Projects/NBA/forr1.csv")
+
+#df <- df |> filter(ALTDIF**2> 1e+07)
+
+m1 <- lm(df$DISTperMIN ~ df$ALTDIF)
+
+ggplot(df,aes(x=ALTDIF,y=DISTperMIN,color=factor(df$TEAM_HOME))) + geom_point()
+
+
+```
+
+
+```{r}
+ggplot(df,aes(x=HIGHALT,y=DISTperMIN)) + geom_boxplot()
+
+```
+```{r}
+summary(aov(DISTperMIN~HIGHALT,data=df))
+
+```
+
+
+
+
+```{r}
+summary(m1)
+```
+
+
+
+
+
+
