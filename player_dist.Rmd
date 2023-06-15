@@ -1,0 +1,51 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+```
+
+
+```{r}
+df <- read.csv('C:/Users/Alex/Google Drive/Projects/NBA/altitude/game_player_dist.csv')
+df = df[df$DIST>=0.1,]
+
+df$MIN <- sapply(strsplit(df$MIN,":"),
+  function(x) {
+    x <- as.numeric(x)
+    x[1]+x[2]/60
+  })
+
+
+df$GAME_DATE <- as.Date(df$GAME_DATE)
+
+df
+
+```
+
+```{r}
+player = "Ty Lawson"
+
+tdf = df[df$PLAYER_NAME==player,]
+p <- ggplot(tdf, aes(x = GAME_DATE, y = DIST/MIN)) + geom_point(aes(color=factor(TEAM_ABBREVIATION)))
+
+p + scale_colour_discrete("Teams") + ggtitle(sprintf("The Speed of %s over time", player))
+
+
+```
+
+
+```{r}
+
+df
+
+```
+
+
+
+

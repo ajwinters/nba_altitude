@@ -16,7 +16,7 @@ df <- read.csv("team_meandisttravel_homeandaway_nongrouped.csv")
 ```{r}
 #anova(DIST~HIGHALT_home+HIGHALT_away,data=df)
 
-m1 <- lm(DIST~HIGHALT_away,data=df)
+m1 <- lm(DIST~TEAM_ABBREVIATION+HIGHALT_away,data=df)
 
 anova(m1)
 

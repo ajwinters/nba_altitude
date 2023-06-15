@@ -1754,59 +1754,14 @@ display: none;
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFLCBmaWcud2lkdGggPSAxMDAsIGZpZy5oZWlnaHQgPSA1KVxuXG5kZiA8LSByZWFkLmNzdihcInRlYW1fbWVhbmRpc3R0cmF2ZWxfaG9tZWFuZGF3YXlfbm9uZ3JvdXBlZC5jc3ZcIilcbmBgYCJ9 -->
-<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE, fig.width = 100, fig.height = 5)
-
-df &lt;- read.csv(&quot;team_meandisttravel_homeandaway_nongrouped.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2Fub3ZhKERJU1R+SElHSEFMVF9ob21lK0hJR0hBTFRfYXdheSxkYXRhPWRmKVxuXG5tMSA8LSBsbShESVNUfkhJR0hBTFRfYXdheSxkYXRhPWRmKVxuXG5hbm92YShtMSlcbmBgYCJ9 -->
-<pre class="r"><code>#anova(DIST~HIGHALT_home+HIGHALT_away,data=df)
-
-m1 &lt;- lm(DIST~HIGHALT_away,data=df)
-
-anova(m1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiQW5hbHlzaXMgb2YgVmFyaWFuY2UgVGFibGVcblxuUmVzcG9uc2U6IERJU1RcbiAgICAgICAgICAgICAgIERmICBTdW0gU3EgTWVhbiBTcSBGIHZhbHVlICAgIFByKD5GKSAgICBcbkhJR0hBTFRfYXdheSAgICAxICAgIDYuNTQgIDYuNTQwMSAgIDE5LjEyIDEuMjU2ZS0wNSAqKipcblJlc2lkdWFscyAgICA0MzU0IDE0ODkuMzAgIDAuMzQyMSAgICAgICAgICAgICAgICAgICAgICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuIn0= -->
-<pre><code>Analysis of Variance Table
-
-Response: DIST
-               Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
-HIGHALT_away    1    6.54  6.5401   19.12 1.256e-05 ***
-Residuals    4354 1489.30  0.3421                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShtMSlcbmBgYCJ9 -->
-<pre class="r"><code>summary(m1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxubG0oZm9ybXVsYSA9IERJU1QgfiBISUdIQUxUX2F3YXksIGRhdGEgPSBkZilcblxuUmVzaWR1YWxzOlxuICAgIE1pbiAgICAgIDFRICBNZWRpYW4gICAgICAzUSAgICAgTWF4IFxuLTUuMTE3MyAtMC4zOTczIC0wLjAwOTUgIDAuMzgyNyAgMi4wMzI3IFxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yICB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAxNy44MjczMTMgICAwLjAwOTE3MSAxOTQzLjkxMyAgPCAyZS0xNiAqKipcbkhJR0hBTFRfYXdheVRydWUgLTAuMTU1Njg2ICAgMC4wMzU2MDQgICAtNC4zNzMgMS4yNmUtMDUgKioqXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuUmVzaWR1YWwgc3RhbmRhcmQgZXJyb3I6IDAuNTg0OSBvbiA0MzU0IGRlZ3JlZXMgb2YgZnJlZWRvbVxuTXVsdGlwbGUgUi1zcXVhcmVkOiAgMC4wMDQzNzIsXHRBZGp1c3RlZCBSLXNxdWFyZWQ6ICAwLjAwNDE0NCBcbkYtc3RhdGlzdGljOiAxOS4xMiBvbiAxIGFuZCA0MzU0IERGLCAgcC12YWx1ZTogMS4yNTZlLTA1XG4ifQ== -->
-<pre><code>
-Call:
-lm(formula = DIST ~ HIGHALT_away, data = df)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--5.1173 -0.3973 -0.0095  0.3827  2.0327 
-
-Coefficients:
-                  Estimate Std. Error  t value Pr(&gt;|t|)    
-(Intercept)      17.827313   0.009171 1943.913  &lt; 2e-16 ***
-HIGHALT_awayTrue -0.155686   0.035604   -4.373 1.26e-05 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.5849 on 4354 degrees of freedom
-Multiple R-squared:  0.004372,  Adjusted R-squared:  0.004144 
-F-statistic: 19.12 on 1 and 4354 DF,  p-value: 1.256e-05</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1831,7 +1786,7 @@ ggsave(&quot;distance_homeVaway.png&quot;)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCg0KYGBge3J9DQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUsIGZpZy53aWR0aCA9IDEwMCwgZmlnLmhlaWdodCA9IDUpDQoNCmRmIDwtIHJlYWQuY3N2KCJ0ZWFtX21lYW5kaXN0dHJhdmVsX2hvbWVhbmRhd2F5X25vbmdyb3VwZWQuY3N2IikNCmBgYA0KDQoNCg0KYGBge3J9DQojYW5vdmEoRElTVH5ISUdIQUxUX2hvbWUrSElHSEFMVF9hd2F5LGRhdGE9ZGYpDQoNCm0xIDwtIGxtKERJU1R+SElHSEFMVF9hd2F5LGRhdGE9ZGYpDQoNCmFub3ZhKG0xKQ0KDQoNCmBgYA0KDQoNCmBgYHtyfQ0Kc3VtbWFyeShtMSkNCmBgYA0KDQoNCg0KDQpgYGB7ciBmaWcud2lkdGggPSAxMiwgZmlnLmhlaWdodCA9IDEyfQ0KbGlicmFyeShnZ3Bsb3QyKQ0KDQpnZ3Bsb3QoZGYsIGFlcyh4ID0gVEVBTV9BQkJSRVZJQVRJT04sIHkgPSBESVNUKSkgKyBnZW9tX2JveHBsb3QoYWVzKGZpbGwgPSBISUdIQUxUX2F3YXkpLHBvc2l0aW9uID0gcG9zaXRpb25fZG9kZ2UoMC44KSkrDQogIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcz1jKCIjOTk5OTk5IiwgIiNFNjlGMDAiKSkgKyB0aGVtZShhc3BlY3QucmF0aW8gPSAxKQ0KDQpnZ3NhdmUoImRpc3RhbmNlX2hvbWVWYXdheS5wbmciKQ0KDQpgYGANCg0KDQoNCg0KDQoNCg0KDQoNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCg0KYGBge3J9DQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUsIGZpZy53aWR0aCA9IDEwMCwgZmlnLmhlaWdodCA9IDUpDQoNCmRmIDwtIHJlYWQuY3N2KCJ0ZWFtX21lYW5kaXN0dHJhdmVsX2hvbWVhbmRhd2F5X25vbmdyb3VwZWQuY3N2IikNCmBgYA0KDQoNCg0KYGBge3J9DQojYW5vdmEoRElTVH5ISUdIQUxUX2hvbWUrSElHSEFMVF9hd2F5LGRhdGE9ZGYpDQoNCm0xIDwtIGxtKERJU1R+VEVBTV9BQkJSRVZJQVRJT04rSElHSEFMVF9hd2F5LGRhdGE9ZGYpDQoNCmFub3ZhKG0xKQ0KDQoNCmBgYA0KDQoNCmBgYHtyfQ0Kc3VtbWFyeShtMSkNCmBgYA0KDQoNCg0KDQpgYGB7ciBmaWcud2lkdGggPSAxMiwgZmlnLmhlaWdodCA9IDEyfQ0KbGlicmFyeShnZ3Bsb3QyKQ0KDQpnZ3Bsb3QoZGYsIGFlcyh4ID0gVEVBTV9BQkJSRVZJQVRJT04sIHkgPSBESVNUKSkgKyBnZW9tX2JveHBsb3QoYWVzKGZpbGwgPSBISUdIQUxUX2F3YXkpLHBvc2l0aW9uID0gcG9zaXRpb25fZG9kZ2UoMC44KSkrDQogIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcz1jKCIjOTk5OTk5IiwgIiNFNjlGMDAiKSkgKyB0aGVtZShhc3BlY3QucmF0aW8gPSAxKQ0KDQpnZ3NhdmUoImRpc3RhbmNlX2hvbWVWYXdheS5wbmciKQ0KDQpgYGANCg0KDQoNCg0KDQoNCg0KDQoNCg0K</div>
 
 
 
