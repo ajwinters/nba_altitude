@@ -49,4 +49,3 @@ ggsave("distance_homeVaway.png")
 
 
 
-

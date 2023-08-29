@@ -12,7 +12,7 @@ library(tidyr)
 
 
 ```{r}
-df <- read.csv('C:/Users/Alex/Google Drive/Projects/NBA/altitude/game_player_dist.csv')
+df <- read.csv('C:/Users/Alex/Projects/NBA/altitude/game_player_dist.csv')
 df = df[df$DIST>=0.1,]
 
 df$MIN <- sapply(strsplit(df$MIN,":"),
@@ -23,28 +23,124 @@ df$MIN <- sapply(strsplit(df$MIN,":"),
 
 
 df$GAME_DATE <- as.Date(df$GAME_DATE)
-
-df
+df['SEASON'] <- substr(df[,"GAME_ID"],2,3)
 
 ```
 
-```{r}
-player = "Ty Lawson"
+```{r fig.width = 12, fig.height = 12}
+player = "John Wall"
 
 tdf = df[df$PLAYER_NAME==player,]
 p <- ggplot(tdf, aes(x = GAME_DATE, y = DIST/MIN)) + geom_point(aes(color=factor(TEAM_ABBREVIATION)))
 
 p + scale_colour_discrete("Teams") + ggtitle(sprintf("The Speed of %s over time", player))
 
+ggsave(sprintf("./plots/%s.png",player))
+
 
 ```
 
 
 ```{r}
 
-df
+mdf <- tdf |> group_by(SEASON) |> summarise(total = mean(DIST/MIN))
+
 
 ```
+
+
+```{r}
+
+ggplot(tdf, aes(x = SEASON, y = DIST/MIN, fill=TEAM_ABBREVIATION)) + geom_boxplot(position = position_dodge(0.8))+
+  scale_fill_manual(values=c("#999999", "#E69F00","#AE3999")) + theme(aspect.ratio = 1)
+
+ggsave("./plots/John Wall average.png")
+
+
+```
+
+
+
+```{r}
+ library(dplyr)
+ df1 <- df %>%
+     group_by(PLAYER_ID) %>%
+     filter(n()>1)
+```
+
+
+```{r}
+write.csv(df1,"./morethan1team.csv")
+
+```
+
+
+```{r}
+ df2<-df1 %>% 
+     filter(n_distinct(TEAM_ID)>1) %>%
+    filter(any(TEAM_ABBREVIATION=='DEN' | TEAM_ABBREVIATION=='UTA')) %>%
+  arrange(PLAYER_ID)
+
+write.csv(df2,"./DEN_UTA_groups.csv")
+```
+
+
+```{r}
+PlayerList <- unique(df2$PLAYER_NAME)
+PlayerList
+```
+
+```{r fig.width = 12, fig.height = 12}
+player = PlayerList[128]
+
+tdf = df[df$PLAYER_NAME==player,]
+p <- ggplot(tdf, aes(x = GAME_DATE, y = DIST/MIN)) + geom_point(aes(color=factor(TEAM_ABBREVIATION)))
+
+p + scale_colour_discrete("Teams") + ggtitle(sprintf("The Speed of %s over time", player))
+
+###########
+
+ggplot(tdf, aes(x = SEASON, y = DIST/MIN, fill=TEAM_ABBREVIATION)) + geom_boxplot(position = position_dodge(0.8))+
+  theme(aspect.ratio = 1)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
